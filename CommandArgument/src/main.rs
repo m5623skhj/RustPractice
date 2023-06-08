@@ -14,6 +14,8 @@ fn gcd(mut n: u64, mut m: u64) -> u64{
         m = m % n;
     }
 
+    // return으로 할 수도 있으나, 
+    // 아래와 같이 세미콜론이 없이 표현식을 마치면 해당 값이 반환됨
     n
 }
 
@@ -46,4 +48,15 @@ fn main() {
     println!("The greatest common divisor of {:?} is {}", numbers, d);
     // rust에서는 expect나 std::process:exit 등의 명시적 함수 호출에 대해서만 
     // 오류 상태 코드를 가지고 종료하게 할 수 있음
+}
+
+// 보통 테스트 코드는 컴파일 대상에서는 제외됨
+// cargo test로 실행하면 테스트 함수들이 동작함
+#[test]
+fn test_gcd()
+{
+    assert_eq!(gcd(14, 15), 1);
+    assert_eq!(gcd(2 * 3 * 5 * 11 * 17,
+    3 * 7 * 11 * 13 * 19),
+    3 * 11);
 }
